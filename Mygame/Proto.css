@@ -1,0 +1,67 @@
+/* HPバーの共通スタイル */
+.hp-bar progress {
+  width: 200px;       /* ← 横幅を固定 */
+  height: 20px;       /* 高さを見やすく */
+  appearance: none;   /* ブラウザごとのデフォルトスタイルを無効化 */
+}
+
+/* Chromeなど対応ブラウザ向けの色指定 */
+progress::-webkit-progress-bar {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+progress::-webkit-progress-value {
+  background-color: #4caf50; /* 緑色のHPバー */
+  border-radius: 10px;
+}
+
+
+/* 手札のカードを並べるエリア */
+#hand {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* カードの基本スタイル */
+.card {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+/* カードの種類ごとに色分け */
+.card.attack {
+  background-color: #ff9999;
+}
+
+.card.defend {
+  background-color: #99ccff;
+}
+
+.card.heal {
+  background-color: #99ff99;
+}
+
+/* ターンインジケータ */
+#turn-indicator {
+  font-size: 1.2em;
+  margin: 15px 0;
+  color: #333;
+  font-weight: bold;
+}
