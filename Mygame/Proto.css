@@ -1,8 +1,26 @@
-/* HPバーの共通スタイル */
+/* HPバーのスタイル */   
+.character-area {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hp-area {
+  margin-top: 10px;
+}
+
+.hp-area h2 {
+  margin: 5px 0;
+  font-size: 1.2em;
+}
+
+.hp-bar {
+  text-align: center;
+  margin: 0 auto;
+}
+
 .hp-bar progress {
-  width: 200px;       /* ← 横幅を固定 */
-  height: 20px;       /* 高さを見やすく */
-  appearance: none;   /* ブラウザごとのデフォルトスタイルを無効化 */
+  width: 200px;
+  height: 20px;
 }
 
 /* Chromeなど対応ブラウザ向けの色指定 */
@@ -64,4 +82,26 @@ progress::-webkit-progress-value {
   margin: 15px 0;
   color: #333;
   font-weight: bold;
+}
+
+/* 共通スタイル（サイズ・ドット絵保持） */
+/* 敵とプレイヤーの立ち絵に共通のスタイル */
+#enemy-img, #player-img {
+  width: 150px;       /* 横幅を150pxに固定（好みに応じて調整） */
+  height: auto;       /* 高さは自動調整 */
+  display: block;
+  margin: 0 auto;     /* 中央に表示（任意） */
+}
+
+
+/* プレイヤー画像を左に配置 */
+#character_kishi_man_03_blue {
+  float: left;
+  margin-right: 20px;
+}
+
+/* 敵画像を右に配置 */
+#yurei_03 {
+  float: right;
+  margin-left: 20px;
 }

@@ -1,1 +1,1 @@
-# sskr
+# Original Game Project

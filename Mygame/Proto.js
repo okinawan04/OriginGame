@@ -97,7 +97,12 @@ function getCardEffectText(card) {
   }
 }
 
+let isPlayerTurn = true; // グローバル変数として追加
+
 function handlePlayerAction(card, index) {
+  if (!isPlayerTurn) return; // プレイヤーのターンでなければ何もしない
+  isPlayerTurn = false; // 以降の操作をロック
+
   let logText = "";
   if (card.type === "attack") {
     let dmg = enemyDefending ? Math.floor(card.value / 2) : card.value;
@@ -120,6 +125,7 @@ function handlePlayerAction(card, index) {
   if (enemyHP === 0) {
     result.innerText = "勝利！";
     log.innerText = logText;
+    isPlayerTurn = true; // 勝利時はロック解除
     return;
   }
 
@@ -137,6 +143,7 @@ function handlePlayerAction(card, index) {
     drawCards(1);
     renderCards();
     showTurn("あなたのターン！");
+    isPlayerTurn = true; // プレイヤーのターン開始時にロック解除
   }, 800);
 }
 
