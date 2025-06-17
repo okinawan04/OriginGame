@@ -32,14 +32,14 @@
 
 ## 📁 ファイル構成
 
--OriginGame/
--├── Proto.html # メイン画面
--├── Proto.css # スタイル設定
--├── Proto.js # ゲームロジック
--├── images/ # キャラクター・背景画像
--│ └── ruinsBg.jpg
--│ └── player.png / enemy.png 等
--└── README.md # このファイル
+OriginGame/
+├── Proto.html # メイン画面
+├── Proto.css # スタイル設定
+├── Proto.js # ゲームロジック
+├── images/ # キャラクター・背景画像
+│ └── ruinsBg.jpg
+│ └── player.png / enemy.png 等
+└── README.md # このファイル
 
 ---
 
