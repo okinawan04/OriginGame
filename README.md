@@ -75,13 +75,3 @@ OriginGame/
 
 ---
 
-## 👤 制作者
-
-- [@okinawan04](https://github.com/okinawan04)
-
----
-
-## 📄 ライセンス
-
-MIT License
-
