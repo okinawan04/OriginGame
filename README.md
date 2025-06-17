@@ -2,7 +2,8 @@
 
 **OriginGame** は、HTML/CSS/JavaScript で制作されたブラウザベースのシンプルなカードバトルゲームです。プレイヤーと敵が交互にターンを行い、戦術的にカードを使って勝利を目指します！
 
-![screenshot](./images/screenshot.png)
+![image](https://github.com/user-attachments/assets/dcb30484-c7b6-4e0d-89c0-0eeb7d05628c)
+
 
 ---
 
