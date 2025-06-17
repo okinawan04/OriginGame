@@ -55,13 +55,16 @@ function reshuffleIfNeeded() {
 }
 
 function drawCards(num) {
+  console.log("drawCards 実行: ", num);
   for (let i = 0; i < num; i++) {
     reshuffleIfNeeded();
     if (deck.length === 0) break;
     hand.push(deck.pop());
   }
+  console.log("drawCards 後の手札の数: ", hand.length);
   updateDeckInfo();
 }
+
 
 function updateDeckInfo() {
   deckCountSpan.textContent = deck.length;
@@ -76,6 +79,8 @@ function updateHPDisplay() {
 }
 
 function renderCards() {
+  console.log("renderCards 実行: 手札の枚数", hand.length);
+
   handDiv.innerHTML = "";
   hand.forEach((card, index) => {
     const cardElem = document.createElement("div");
@@ -88,6 +93,7 @@ function renderCards() {
     handDiv.appendChild(cardElem);
   });
 }
+
 
 function getCardEffectText(card) {
   switch (card.type) {
