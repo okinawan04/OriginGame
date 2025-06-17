@@ -13,7 +13,7 @@ let discardPile = [];
 
 // --- 使用可能カードの種類 ---
 const cardPool = [
-  { name: "攻撃", type: "attack", value: 5 },
+  { name: "攻撃", type: "attack", value: 6 },
   { name: "防御", type: "defend", value: 0 },
   { name: "回復", type: "heal",  value: 4 },
 ];
