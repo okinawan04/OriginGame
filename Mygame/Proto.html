@@ -16,9 +16,10 @@
       <div class="character-area">
         <img id="enemy-img" src="images/yurei_03.png" alt="敵" />
         <div class="hp-area">
+          <!-- 敵のHP表示とバー -->
           <h2>敵 HP: <span id="enemy-hp">30</span></h2>
           <div class="hp-bar">
-            <progress id="enemy-hp-bar" value="30" max="30"></progress>
+            <div class="hp-bar-inner" id="enemy-hp-bar-inner"></div>
           </div>
         </div>
       </div>
@@ -27,9 +28,10 @@
       <div class="character-area">
         <img id="player-img" src="images/character_kishi_man_03_blue.png" alt="プレイヤー" />
         <div class="hp-area">
+          <!-- プレイヤーのHP表示とバー -->
           <h2>あなたの HP: <span id="player-hp">20</span></h2>
           <div class="hp-bar">
-            <progress id="player-hp-bar" value="20" max="20"></progress>
+            <div class="hp-bar-inner" id="player-hp-bar-inner"></div>
           </div>
         </div>
       </div>

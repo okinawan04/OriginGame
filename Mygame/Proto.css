@@ -22,8 +22,29 @@
 }
 
 .hp-bar {
-  text-align: center;
-  margin: 0 auto;
+  width: 120px;
+  height: 12px;
+  background-color: #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hp-bar-inner {
+  height: 100%;
+  width: 100%;
+  transition: width 0.4s ease;
+  background-color: #4caf50; /* 初期は緑 */
+}
+
+/* 色変化用クラス */
+.hp-green {
+  background-color: #4caf50;
+}
+.hp-yellow {
+  background-color: #ffcc00;
+}
+.hp-red {
+  background-color: #f44336;
 }
 
 .hp-bar progress {

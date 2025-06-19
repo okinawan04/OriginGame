@@ -4,7 +4,7 @@ const playerMaxHP = 20;
 let enemyHP = enemyMaxHP;
 let playerHP = playerMaxHP;
 let playerDefending = false;  // 防御フラグ（プレイヤー）
-let enemyDefending  = false;  // 防御フラグ（敵）
+let enemyDefending = false;  // 防御フラグ（敵）
 
 // --- デッキ・手札・捨て札 ---
 let deck = [];
@@ -15,20 +15,20 @@ let discardPile = [];
 const cardPool = [
   { name: "攻撃", type: "attack", value: 6 },
   { name: "防御", type: "defend", value: 0 },
-  { name: "回復", type: "heal",  value: 4 },
+  { name: "回復", type: "heal", value: 4 },
 ];
 
 // --- HTMLの要素取得 ---
-const handDiv        = document.getElementById("hand");
-const enemyHPSpan    = document.getElementById("enemy-hp");
-const enemyHPBar     = document.getElementById("enemy-hp-bar");
-const playerHPSpan   = document.getElementById("player-hp");
-const playerHPBar    = document.getElementById("player-hp-bar");
-const result         = document.getElementById("result");
-const log            = document.getElementById("log");
-const deckCountSpan  = document.getElementById("deck-count");
+const handDiv = document.getElementById("hand");
+const enemyHPSpan = document.getElementById("enemy-hp");
+const enemyHPBar = document.getElementById("enemy-hp-bar");
+const playerHPSpan = document.getElementById("player-hp");
+const playerHPBar = document.getElementById("player-hp-bar");
+const result = document.getElementById("result");
+const log = document.getElementById("log");
+const deckCountSpan = document.getElementById("deck-count");
 const discardCountSpan = document.getElementById("discard-count");
-const turnIndicator  = document.getElementById("turn-indicator");
+const turnIndicator = document.getElementById("turn-indicator");
 
 // --- 初期セットアップ処理 ---
 function initializeDeck() {
@@ -64,24 +64,49 @@ function drawCards(num) {
 }
 
 function updateDeckInfo() {
-  deckCountSpan.textContent    = deck.length;
+  deckCountSpan.textContent = deck.length;
   discardCountSpan.textContent = discardPile.length;
 }
 
 function updateHPDisplay() {
-  enemyHPSpan.textContent  = enemyHP;
-  enemyHPBar.value         = enemyHP;
+  // 数値更新
+  enemyHPSpan.textContent = enemyHP;
   playerHPSpan.textContent = playerHP;
-  playerHPBar.value        = playerHP;
+
+  // プレイヤーHPバー更新
+  updateHPBar("player-hp-bar-inner", playerHP, playerMaxHP);
+
+  // 敵HPバー更新
+  updateHPBar("enemy-hp-bar-inner", enemyHP, enemyMaxHP);
 }
+
+// 汎用的なHPバー更新関数（アニメーション＋色変化）
+function updateHPBar(barId, currentHP, maxHP) {
+  const bar = document.getElementById(barId);
+  const hpRatio = currentHP / maxHP;
+
+  // 幅の変更（アニメーションされる）
+  bar.style.width = `${hpRatio * 100}%`;
+
+  // 色変更（クラスで制御）
+  bar.classList.remove("hp-green", "hp-yellow", "hp-red");
+  if (hpRatio > 0.7) {
+    bar.classList.add("hp-green");
+  } else if (hpRatio > 0.3) {
+    bar.classList.add("hp-yellow");
+  } else {
+    bar.classList.add("hp-red");
+  }
+}
+
 
 function renderCards() {
   handDiv.innerHTML = "";
   hand.forEach((card, index) => {
-    const cardElem   = document.createElement("div");
+    const cardElem = document.createElement("div");
     cardElem.className = `card ${card.type}`;
     cardElem.innerHTML = `${card.name}<br><small>${getCardEffectText(card)}</small>`;
-    cardElem.onclick   = () => {
+    cardElem.onclick = () => {
       if (enemyHP <= 0 || playerHP <= 0) return; // 決着後は無効
       handlePlayerAction(card, index);
     };
@@ -93,7 +118,7 @@ function getCardEffectText(card) {
   switch (card.type) {
     case "attack": return `敵に${card.value}ダメージ`;
     case "defend": return "次のダメージ半減";
-    case "heal":   return `HP+${card.value}`;
+    case "heal": return `HP+${card.value}`;
   }
 }
 
@@ -135,8 +160,8 @@ function handlePlayerAction(card, index) {
   // 勝利チェック
   if (enemyHP === 0) {
     result.innerText = "勝利！";
-    log.innerText    = logText;
-    isPlayerTurn     = true;
+    log.innerText = logText;
+    isPlayerTurn = true;
     return;
   }
 
@@ -163,8 +188,8 @@ function handlePlayerAction(card, index) {
 //-------------------------------------------
 function enemyTurn() {
   const actions = ["attack", "defend", "heal"];
-  const choice  = actions[Math.floor(Math.random() * actions.length)];
-  let logText   = "";
+  const choice = actions[Math.floor(Math.random() * actions.length)];
+  let logText = "";
 
   if (choice === "attack") {
     let dmg = 5;
