@@ -26,13 +26,13 @@
   height: 12px;
   background-color: #ddd;
   border-radius: 6px;
-  overflow: hidden;
+  overflow: hidden; /* 子要素のはみ出しを隠す */
 }
 
 .hp-bar-inner {
   height: 100%;
-  width: 100%;
-  transition: width 0.4s ease;
+  width: 100%;  /* 初期は満タン */
+  transition: width 0.4s ease;   /* ← これで滑らかに減る */
   background-color: #4caf50; /* 初期は緑 */
 }
 
